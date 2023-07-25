@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../CoinsBank/static/img/icon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/static/css/outraPagina.css">
+    <script src="../static/scripts/index.js" defer></script>
+    <title>AvaliaMED</title>
+</head>
+
+<button class="button-voltar" onclick="Voltar()">Voltar</button>
+<body class="main">
+    <form id="doctor-rating-form">
+        <h2>Avaliação de Médicos</h2>
+      
+        <div class="form-group">
+          <label for="name">Nome:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="specialty">Especialidade:</label>
+          <input type="text" id="specialty" name="specialty" required>
+        </div>
+      
+        <div class="form-group">
+          <label for="rating">Avaliação:</label>
+          <select id="rating" name="rating" required>
+            <option value="">Selecione uma opção</option>
+            <option value="5">Excelente</option>
+            <option value="4">Muito Bom</option>
+            <option value="3">Bom</option>
+            <option value="2">Regular</option>
+            <option value="1">Ruim</option>
+          </select>
+        </div>
+      
+        <div class="form-group">
+          <label for="comment">Comentário:</label>
+          <textarea id="comment" name="comment" rows="4" required></textarea>
+        </div>
+      
+        <button type="submit">Enviar Avaliação</button>
+      </form>
+      
+      <div id="success-message" class="hidden">
+        <p>Avaliação enviada com sucesso!</p>
+      </div>
+
+      <script>
+
+
+    document.getElementById("doctor-rating-form").addEventListener("submit", function(event) {
+      event.preventDefault(); // Evita o envio do formulário
+
+      // Obter os valores do formulário
+      var name = document.getElementById("name").value;
+      var specialty = document.getElementById("specialty").value;
+      var rating = document.getElementById("rating").value;
+      var comment = document.getElementById("comment").value;
+
+      // Realizar validação 
+
+      if (name.trim() === "" || specialty.trim() === "" || rating.trim() === "" || comment.trim() === "") {
+        alert("Por favor, preencha todos os campos.");
+        return;
+      }
+
+      // Exibir mensagem de envio
+      var successMessage = document.getElementById("success-message");
+      successMessage.classList.remove("hidden");
+
+      // Simular envio do formulário 
+      setTimeout(function() {
+        document.getElementById("doctor-rating-form").reset(); // Limpar os campos do formulário
+        successMessage.classList.add("hidden"); // Ocultar mensagem de envio
+      }, 3000); // Aguardar 3 segundos (3000 milissegundos) antes de ocultar a mensagem
+    });
+
+      </script>
+    </form>       
+</body>
+</html>
+
